@@ -5,7 +5,31 @@ int m,n,i,j;
 char str1[]="960410";   //pattern
 char *text;      //charactor pointer
 int count;
-
+//naive string matching function
+int naive(int n,int m){
+	
+	FILE *fp=fopen("results.txt","a");
+	 for(i=0;i<m-n+1;i++)
+  {
+    for(j=0;j<n;j++)
+    {
+     if(text[i+j] != str1[j])
+       break;
+    }
+    if(j == n)
+    {
+    	count++;
+    	fprintf(fp,"%d ,",i);
+      printf("%d ,",i);  //print matched text index with tha pattern 
+    }
+   
+  }
+  
+ printf("\n\nTotal Number of matches:%d\n",count);   //print number of matches were present
+ fprintf(fp,"\n\n\tTotal Number of matches:%d\n\n",count);   //write matching count to the results.txt
+  return 0;
+   
+}
 
 
 //main function
