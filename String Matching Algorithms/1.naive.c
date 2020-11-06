@@ -32,6 +32,7 @@ int naive(int n,int m){
 }
 
 
+
 //main function
 int main(){
 	int size=1339783531;
@@ -59,4 +60,23 @@ int main(){
 	}
 fclose(fpoint);
  
+ // get text length and pattern length
+ m=strlen(text);  
+ n=strlen(str1);
+ 
+ FILE *fp=fopen("results.txt","w");    //write to the results.txt file
+  fprintf(fp,"\n\t\t**********Searching Pattern From Pi********** ");
+  printf("\n\t**********Searching Pattern From Pi********** ");
+ 
+ fprintf(fp,"\n\nPattern (DOB):9 6 0 4 1 0"); //print pattern to the results .txt file
+ printf("\n\nPattern (DOB):9 6 0 4 1 0");   //print pattern
+ 
+ fprintf(fp,"\n\n------Naive (Brute-Force) String Matching------");
+ printf("\n\n------Naive (Brute-Force) String Matching------");
+ 
+ fprintf(fp,"\n\n\tPattern found at indexes: ");
+ printf("\n\nPattern found at indexes: ");
+ naive(n,m);      //call the navie function
+
+ fclose(fp);
 }
