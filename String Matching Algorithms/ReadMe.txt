@@ -1,4 +1,4 @@
 
-this folder contains  string matching algorithms.
+this folder contains naive string matching algorithms.
 
  
