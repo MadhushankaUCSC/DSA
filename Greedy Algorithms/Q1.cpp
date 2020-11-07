@@ -86,4 +86,5 @@ double greedyknapsack(vector<int>price,vector<int>volume,int N){
 			break; 
 		}
 	}
+	return 	Maximum_value;  //return the maximum value sandun takes
 }
