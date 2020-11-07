@@ -29,7 +29,36 @@ int compLps(char str1[],int n,int lps[]){
 	}
 
 }
-
+//Knuth-Morris-Pratt(KMP) string matching function
+int KMP(int n,int m){
+	
+	 	FILE *fk=fopen("results.txt","a");
+	 	
+   compLps(str1,n,lps);   //call compLps function
+   	i=0;
+  	j=0;
+  while(i<m-n+1){
+  	if(text[i]==str1[j]){  //match tezt characters with pattern characters
+  		i++;
+  		j++;
+	  }else {
+	  	if(j!=0){
+	  		j=lps[j-1];
+		  }else{
+		  	i++;
+		  }
+	}
+		 if(j==n){
+		 	count++;
+		 	fprintf(fk,"%d, ",i-j);
+		 	printf("%d, ",i-j);  //print text index which match with pattern
+		 	j=lps[j-1];
+		 } 
+	  
+  }	
+printf("\n\nTotal Number of matches:%d\n",count);  //print number of matches were present
+fprintf(fk,"\n\n\tTotal Number of matches:%d\n\n",count);  //write matching count to the results.txt
+}
 //main function
 int main(){
 	int size=1339783531;
