@@ -38,4 +38,52 @@ int main(){
 	cout <<greedyknapsack(price,volume,N); 
 }
 
-
+//function of greedyknapsack 
+//return double value
+double greedyknapsack(vector<int>price,vector<int>volume,int N){
+	
+	int numOfElements = volume.size(); 	//number of elements (it also can calculate price.size() )
+	int k;
+	int Maximum_value=0;   //variable for store the maximum value wine sandun takes 
+	
+		/*create a Multimap container call value_density to store 
+	ratio and indexes */
+	multimap<double, int> value_density;
+	 
+	 
+	//for loop for insert value_density casted value of price[k]/volume[k] and the corresponding indexs
+	for(k=0;k<numOfElements;k++){
+		value_density.insert(make_pair((double)price[k]/volume[k],k));
+	}
+	
+	//create a reverse iterator call itr for multimap
+	multimap<double,int>::reverse_iterator itr;
+	
+	//traverse the multimap reverse order  
+	for(itr=value_density.rbegin();itr!=value_density.rend();itr++){
+		
+			/* Fraction of volume  of i'th item 
+		 that can be store in the knapsack */
+		double fraction=(double)N / volume[itr->second]; 
+		
+		/* if remaining_volume of knapsack is greater 
+		 than the volume of i'th barrel */
+		if(N>=0 && N>=volume[itr->second]){
+			
+				/* increase Maximum_value by i'th barrel
+			 price value*/
+			Maximum_value =	Maximum_value + price[itr->second];
+			
+				/* decrement knapsack volume to get 
+			 new remaining_volume */ 
+			N =N- volume[itr->second]; 
+		}
+		
+			/* remaining_volume of knapsack is less than 
+		volume of i'th barrel */
+		else if (N < volume[itr->second]) { 
+			Maximum_value =	Maximum_value + (fraction * price[itr->second]);  //update 	Maximum_value
+			break; 
+		}
+	}
+}
