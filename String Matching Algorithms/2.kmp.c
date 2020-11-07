@@ -84,7 +84,27 @@ int main(){
 	
 	}
 	}
-
+fclose(fpoint);
+ // get texte length and pattern length
+ m=strlen(text);
+ n=strlen(str1);
+ 
+ FILE *fp=fopen("results.txt","a");   // appent to the result.txt  file
+ 
+  printf("\n\t**********Searching Pattern From Pi********** ");
+  fprintf(fp,"\n\n\t**********Searching Pattern From Pi********** ");
+  
+  printf("\n\nPattern (DOB):9 6 0 4 1 0");       //print pattern
+  fprintf(fp,"\n\nPattern (DOB):9 6 0 4 1 0");  //print pattern to the results.txt file
+  
+ fprintf(fp,"\n\n\n------Knuth-Morris-Pratt(KMP) String Matching------");
+ printf("\n\n------Knuth-Morris-Pratt(KMP) String Matching------");
+ 
+ printf("\n\nPattern found at indexes: ");
+ fprintf(fp,"\n\n\tPattern found at indexes: ");
+ 
+ KMP(n,m);  //call kMP function
+ fclose(fp);
  }
  
  
