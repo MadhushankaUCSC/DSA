@@ -10,6 +10,12 @@ int main(){
 	int j=0;
 	cin>>n;
 	
+	for(int i=0;i<n;i++){
+		int val;
+		cin>>val;
+		points.push_back(val);
+		mask.push_back(j);
+	}
 	//vec.push_back(points);
 	int curr,next;  
 	int nom;  //number of masks
@@ -54,7 +60,18 @@ int main(){
 		curr =  points[j];
 		next = points[j-1];
 		
-	
+		if(curr>next){
+			if(mask[j] <= mask[j-1]){
+				nom = mask[j-1];
+				mask.insert(mask.begin()+(j),nom+1);	///
+			}
+		}
+		if(curr<next){
+			if(mask[j] >= mask[j-1]){
+				nom = mask[j];
+				mask.insert(mask.begin()+(j-1),nom+1);	
+			}
+		}
 		j--;
 	}
 	nom=0;      // for calculate number of marks
