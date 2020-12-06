@@ -5,8 +5,8 @@
 #define k 256  //k is number of charactors in alphabet
 int i,j,m,n;
 char str1[]="960410";  //pattern
-
-
+char *text;
+int count;
 
 void rabinkarp(int n,int m){
 	
