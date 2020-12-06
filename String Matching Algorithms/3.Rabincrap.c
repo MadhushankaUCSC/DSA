@@ -85,7 +85,8 @@ int  main(int argc, char const *argv[]) {
   fclose(fpoint);  //close file pointer
  // getch();
   
- 
+  m=strlen(text);  //get text length
+  n=strlen(str1);  //get pattern length
   
    FILE *fp=fopen("results.txt","a");
    
